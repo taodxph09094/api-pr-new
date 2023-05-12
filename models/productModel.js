@@ -10,10 +10,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Nhập mô tả"],
   },
-  info: {
-    type: String,
-    required: [true, "Nhập thông tin sản phẩm"],
-  },
+
   promotion: {
     type: String,
     // required: [true, "Nhập giá"],
@@ -30,10 +27,6 @@ const productSchema = new mongoose.Schema({
     required: [true, "Nhập giá"],
     maxLength: [20, "Giá tối đa 8 ký tự"],
   },
-  productLine: {
-    type: String,
-    required: [true, "Nhập dòng sản phẩm"],
-  },
   supplier: {
     type: String,
     required: ["Nhập nhà phân phối"],
@@ -46,11 +39,11 @@ const productSchema = new mongoose.Schema({
     {
       public_id: {
         type: String,
-        required: true,
+        // required: true,
       },
       url: {
         type: String,
-        required: true,
+        // required: true,
       },
     },
   ],
