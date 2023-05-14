@@ -25,6 +25,8 @@ const payment = require("./routes/paymentRoute");
 const orderSystem = require("./routes/orderSystemRoute");
 const coupon = require("./routes/couponRoute");
 const brand = require("./routes/brandRoute");
+const supplier = require("./routes/supplierRoute");
+const categories = require("./routes/categoriesRoute");
 const banner = require("./routes/bannerRoute");
 const feedback = require("./routes/feedbackRoute");
 const newFeed = require("./routes/newFeedRoute");
@@ -41,6 +43,8 @@ app.use("/api/v1", banner);
 app.use("/api/v1", feedback);
 app.use("/api/v1", newFeed);
 app.use("/api/v1", statistical);
+app.use("/api/v1", supplier);
+app.use("/api/v1", categories);
 // Middleware for Errors
 app.use(errorMiddleware);
 

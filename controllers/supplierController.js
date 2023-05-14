@@ -1,34 +1,34 @@
-const Brand = require("../models/brandModel");
+const Supplier = require("../models/supplierModel");
 const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apifeatures");
 
 //create
-exports.createBrand = catchAsyncErrors(async (req, res, next) => {
+exports.createSupplier = catchAsyncErrors(async (req, res, next) => {
   req.body.user = req.user.id;
-  const brand = await Brand.create(req.body);
+  const supplier = await Supplier.create(req.body);
   res.status(201).json({
     success: true,
-    brand,
+    supplier,
   });
 });
 
 // Get All
-exports.getBrand = catchAsyncErrors(async (req, res, next) => {
-  const brand = await Brand.find();
+exports.getSupplier = catchAsyncErrors(async (req, res, next) => {
+  const supplier = await Supplier.find();
 
   res.status(200).json({
     success: true,
-    brand,
+    supplier,
   });
 });
 // update
-exports.updateBrand = catchAsyncErrors(async (req, res, next) => {
+exports.updateSupplier = catchAsyncErrors(async (req, res, next) => {
   const newData = {
     name: req.body.name,
     address: req.body.address,
   };
-  const brand = await Brand.findById(req.params.id, newData, {
+  const supplier = await Supplier.findById(req.params.id, newData, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
@@ -36,19 +36,19 @@ exports.updateBrand = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    brand,
+    supplier,
   });
 });
 
 // Delete Orders
 
-exports.deleteBrand = catchAsyncErrors(async (req, res, next) => {
-  const brand = await Brand.findById(req.params.id);
+exports.deleteSupplier = catchAsyncErrors(async (req, res, next) => {
+  const supplier = await Supplier.findById(req.params.id);
 
-  if (!brand) {
+  if (!supplier) {
     return next(new ErrorHander("Không tìm thấy nhà phân phối", 404));
   }
-  await brand.remove();
+  await supplier.remove();
 
   res.status(200).json({
     success: true,

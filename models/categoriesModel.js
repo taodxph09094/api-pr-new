@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
-const brandSchema = new mongoose.Schema({
+const categoriesSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Nhập tên hãng"],
+    required: [true, "Nhập danh mục"],
     trim: true,
   },
-  address: {
+  image: {
     type: String,
-    required: [true, "Nhập địa chỉ"],
+    required: [true, "Nhập hình ảnh"],
+    trim: true,
   },
-
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
@@ -20,4 +20,4 @@ const brandSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-module.exports = mongoose.model("Brand", brandSchema);
+module.exports = mongoose.model("Categories", categoriesSchema);

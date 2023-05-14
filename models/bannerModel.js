@@ -4,13 +4,21 @@ const bannerSchema = new mongoose.Schema({
     type: String,
     required: [true, "Chọn ảnh"],
   },
-  bannerBonusLeft: {
+  titleMain: {
     type: String,
-    required: [true, "Chọn ảnh"],
+    required: ["Nhập tiêu đề"],
   },
-  bannerBonusRight: {
+  titleDesc: {
     type: String,
-    required: [true, "Chọn ảnh"],
+    required: ["Nhập tiêu đề"],
+  },
+  promotion: {
+    type: String,
+    required: ["Nhập khuyến mãi"],
+  },
+  description: {
+    type: String,
+    required: ["Nhập mô tả"],
   },
   user: {
     type: mongoose.Schema.ObjectId,

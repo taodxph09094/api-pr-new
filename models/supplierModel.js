@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const brandSchema = new mongoose.Schema({
+const supplierSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Nhập tên hãng"],
@@ -9,7 +9,6 @@ const brandSchema = new mongoose.Schema({
     type: String,
     required: [true, "Nhập địa chỉ"],
   },
-
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
@@ -20,4 +19,4 @@ const brandSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-module.exports = mongoose.model("Brand", brandSchema);
+module.exports = mongoose.model("Supplier", supplierSchema);

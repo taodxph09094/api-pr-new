@@ -10,7 +10,6 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Nhập mô tả"],
   },
-
   promotion: {
     type: String,
     // required: [true, "Nhập giá"],
@@ -39,11 +38,11 @@ const productSchema = new mongoose.Schema({
     {
       public_id: {
         type: String,
-        // required: true,
+        required: true,
       },
       url: {
         type: String,
-        // required: true,
+        required: true,
       },
     },
   ],

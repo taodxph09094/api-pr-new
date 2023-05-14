@@ -26,8 +26,6 @@ exports.getBanner = catchAsyncErrors(async (req, res, next) => {
 exports.updateBanner = catchAsyncErrors(async (req, res, next) => {
   const newData = {
     imageBanner: req.body.imageBanner,
-    bannerBonusLeft: req.body.bannerBonusLeft,
-    bannerBonusRight: req.body.bannerBonusRight,
   };
   const banner = await Banner.findById(req.params.id, newData, {
     new: true,
