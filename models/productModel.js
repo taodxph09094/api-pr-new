@@ -12,8 +12,7 @@ const productSchema = new mongoose.Schema({
   },
   promotion: {
     type: Number,
-    // required: [true, "Nhập giá"],
-    default: 0,
+    required: [true, "Nhập % khuyến mãi"],
     maxLength: [3, "Nhập % khuyến mãi"],
   },
   price: {
