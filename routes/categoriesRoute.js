@@ -16,9 +16,7 @@ router
     authorizeRoles("admin", "manager"),
     createCategory
   );
-router
-  .route("/admin/categories")
-  .get(isAuthenticatedUser, authorizeRoles("admin", "manager"), getCategory);
+router.route("/admin/categories").get(getCategory);
 router
   .route("/admin/categories/:id")
   .put(isAuthenticatedUser, authorizeRoles("admin", "manager"), updateCategory)

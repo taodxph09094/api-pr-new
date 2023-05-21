@@ -30,6 +30,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     paidAt: Date.now(),
     user: req.user._id,
     userName: req.user.name,
+    userNumber: req.user.phone,
   });
 
   res.status(201).json({
@@ -73,6 +74,8 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
   )
     .byDate()
     .byMonthAndYear()
+    .byStatus()
+    .byNumber()
     .filter();
   let orders = await apiFeature.query;
   let totalAmount = 0;

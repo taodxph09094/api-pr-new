@@ -43,10 +43,44 @@ class ApiFeatures {
     this.query = this.query.find({ ...monAndDate });
     return this;
   }
+  byStatus() {
+    const status = this.queryStr.status
+      ? {
+          orderStatus: {
+            $regex: this.queryStr.status,
+            $options: "i",
+          },
+        }
+      : {};
+
+    this.query = this.query.find({ ...status });
+    return this;
+  }
+  byNumber() {
+    const number = this.queryStr.number
+      ? {
+          userNumber: {
+            $regex: this.queryStr.number,
+            $options: "i",
+          },
+        }
+      : {};
+
+    this.query = this.query.find({ ...number });
+    return this;
+  }
   filter() {
     const queryCopy = { ...this.queryStr };
     //   Removing some fields for category
-    const removeFields = ["keyword", "page", "limit", "dateFind", "monAndDate"];
+    const removeFields = [
+      "keyword",
+      "page",
+      "limit",
+      "dateFind",
+      "monAndDate",
+      "status",
+      "number",
+    ];
 
     removeFields.forEach((key) => delete queryCopy[key]);
 

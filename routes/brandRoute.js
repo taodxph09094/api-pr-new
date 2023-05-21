@@ -11,9 +11,7 @@ const router = express.Router();
 router
   .route("/admin/brand/create")
   .post(isAuthenticatedUser, authorizeRoles("admin", "manager"), createBrand);
-router
-  .route("/admin/brand")
-  .get(isAuthenticatedUser, authorizeRoles("admin", "manager"), getBrand);
+router.route("/admin/brand").get(getBrand);
 router
   .route("/admin/brand/:id")
   .put(isAuthenticatedUser, authorizeRoles("admin", "manager"), updateBrand)

@@ -50,6 +50,11 @@ const orderSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  userNumber: {
+    type: String,
+    ref: "User",
+    required: true,
+  },
   method: {
     type: String,
     default: "payment",
