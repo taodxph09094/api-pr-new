@@ -91,6 +91,31 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// get all Revenue -- Admin
+exports.getAllRevenue = catchAsyncErrors(async (req, res, next) => {
+  const apiFeature = new ApiFeatures(
+    Order.find({ method: "payment" }),
+    req.query
+  )
+    .byDate()
+    .byMonthAndYear()
+    .byStatus()
+    .byNumber()
+    .filter();
+  let orders = await apiFeature.query;
+  let totalAmount = 0;
+
+  orders.forEach((order) => {
+    totalAmount += order.totalPrice;
+  });
+
+  res.status(200).json({
+    success: true,
+    totalAmount,
+    orders,
+  });
+});
+
 // update Order Status -- Admin
 exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
