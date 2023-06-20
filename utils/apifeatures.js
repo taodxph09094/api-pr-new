@@ -59,7 +59,7 @@ class ApiFeatures {
   byNumber() {
     const number = this.queryStr.number
       ? {
-          userNumber: {
+          number: {
             $regex: this.queryStr.number,
             $options: "i",
           },

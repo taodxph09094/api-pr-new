@@ -28,6 +28,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     dateFind,
     note,
     paidAt: Date.now(),
+    number: shippingInfo.phoneNo,
     user: req.user._id,
     userName: req.user.name,
     userNumber: req.user.phone,
