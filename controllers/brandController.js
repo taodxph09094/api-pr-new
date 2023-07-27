@@ -15,8 +15,10 @@ exports.createBrand = catchAsyncErrors(async (req, res, next) => {
 
 // Get All
 exports.getBrand = catchAsyncErrors(async (req, res, next) => {
-  const brand = await Brand.find();
+  const apiFeature = new ApiFeatures(Brand.find(), req.query).search();
 
+  let brand = await apiFeature.query;
+  brand = await apiFeature.query;
   res.status(200).json({
     success: true,
     brand,

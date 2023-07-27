@@ -7,8 +7,6 @@ const categoriesSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required: [true, "Nhập hình ảnh"],
-    trim: true,
   },
   user: {
     type: mongoose.Schema.ObjectId,

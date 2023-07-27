@@ -15,8 +15,10 @@ exports.createSupplier = catchAsyncErrors(async (req, res, next) => {
 
 // Get All
 exports.getSupplier = catchAsyncErrors(async (req, res, next) => {
-  const supplier = await Supplier.find();
+  const apiFeature = new ApiFeatures(Supplier.find(), req.query).search();
 
+  let supplier = await apiFeature.query;
+  supplier = await apiFeature.query;
   res.status(200).json({
     success: true,
     supplier,

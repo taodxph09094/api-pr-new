@@ -15,11 +15,19 @@ exports.createCategory = catchAsyncErrors(async (req, res, next) => {
 
 // Get All
 exports.getCategory = catchAsyncErrors(async (req, res, next) => {
-  const categories = await Categories.find();
+  const resultPerPage = 10;
+  const apiFeature = new ApiFeatures(Categories.find(), req.query).search();
+
+  let categories = await apiFeature.query;
+
+  apiFeature.pagination(resultPerPage);
+
+  categories = await apiFeature.query;
 
   res.status(200).json({
     success: true,
     categories,
+    resultPerPage,
   });
 });
 // update
