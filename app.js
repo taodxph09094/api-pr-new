@@ -15,7 +15,8 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 const corsOptions = {
   origin: "*",
-  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedMethods: ["GET", "POST", "PUT", "DELETE"],
   optionSuccessStatus: 200,
 };
 
@@ -28,7 +29,6 @@ app.use(cors(corsOptions));
 app.get("/", (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 });
-// app.use(cors());
 
 // Route Imports
 
