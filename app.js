@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "*",
   credentials: true,
   optionSuccessStatus: 200,
 };
@@ -24,6 +24,11 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(cors(corsOptions));
+
+app.get("/", (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+});
+// app.use(cors());
 
 // Route Imports
 
