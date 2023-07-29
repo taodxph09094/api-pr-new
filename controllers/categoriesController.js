@@ -15,6 +15,7 @@ exports.createCategory = catchAsyncErrors(async (req, res, next) => {
 
 // Get All
 exports.getCategory = catchAsyncErrors(async (req, res, next) => {
+  console.log(req.cookies);
   const resultPerPage = 10;
   const apiFeature = new ApiFeatures(Categories.find(), req.query).search();
 
