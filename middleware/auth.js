@@ -4,15 +4,12 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
 exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
-  console.log(req);
   const { token } = req.cookies;
-  console.log(token);
   if (!token) {
     return next(new ErrorHander("Vui lòng đăng nhập để thực hiện", 401));
   }
 
   const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-
   req.user = await User.findById(decodedData.id);
 
   next();

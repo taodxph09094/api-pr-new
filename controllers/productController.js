@@ -40,6 +40,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
 // Get All Product
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
+  console.log(req.cookies);
   const resultPerPage = 8;
   const productsCount = await Product.countDocuments();
 
@@ -66,6 +67,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
 // Get All Product (Admin)
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
+  // console.log(req.cookies);
   // const products = await Product.find();
   const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
