@@ -12,17 +12,13 @@ const router = express.Router();
 router
   .route("/admin/categories/create")
   .post(
-    isAuthenticatedUser,
-    authorizeRoles("admin", "manager"),
     createCategory
   );
 router.route("/admin/categories").get(getCategory);
 router
   .route("/admin/categories/:id")
-  .put(isAuthenticatedUser, authorizeRoles("admin", "manager"), updateCategory)
+  .put( updateCategory)
   .delete(
-    isAuthenticatedUser,
-    authorizeRoles("admin", "manager"),
     deleteCategory
   );
 

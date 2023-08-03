@@ -8,23 +8,8 @@ const {
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
 const router = express.Router();
-router
-  .route("/admin/supplier/create")
-  .post(
-    isAuthenticatedUser,
-    authorizeRoles("admin", "manager"),
-    createSupplier
-  );
-router
-  .route("/admin/supplier")
-  .get(isAuthenticatedUser, authorizeRoles("admin", "manager"), getSupplier);
-router
-  .route("/admin/supplier/:id")
-  .put(isAuthenticatedUser, authorizeRoles("admin", "manager"), updateSupplier)
-  .delete(
-    isAuthenticatedUser,
-    authorizeRoles("admin", "manager"),
-    deleteSupplier
-  );
+router.route("/admin/supplier/create").post(createSupplier);
+router.route("/admin/supplier").get(getSupplier);
+router.route("/admin/supplier/:id").put(updateSupplier).delete(deleteSupplier);
 
 module.exports = router;
