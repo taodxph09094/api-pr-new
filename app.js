@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 const corsOptions = {
-  origin: [process.env.FRONTEND_URL_DEV, "*"],
+  origin: [process.env.FRONTEND_URL_DEV, process.env.FRONTEND_URL_RELEASE, "*"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
   allowedMethods: ["GET", "POST", "PUT", "DELETE"],
