@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const cors = require("cors");
+
 const errorMiddleware = require("./middleware/error");
 
 // Config
@@ -12,44 +13,19 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "config/config.env" });
 }
 
-// Add headers
-app.use(function (req, res, next) {
-  // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
-  // Request methods you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-
-  // Request headers you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
-  );
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader("Access-Control-Allow-Credentials", true);
-
-  // Pass to next layer of middleware
-  next();
-});
-
-// const corsOptions = {
-//   origin: "http://localhost:3000",
-//   credentials: true,
-//   allowedHeaders: ["Content-Type", "Authorization"],
-//   allowedMethods: ["GET", "POST", "PUT", "DELETE"],
-//   optionSuccessStatus: 200,
-// };
+const corsOptions = {
+  origin: [process.env.FRONTEND_URL_DEV, "*"],
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedMethods: ["GET", "POST", "PUT", "DELETE"],
+  optionSuccessStatus: 200,
+};
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // Route Imports
 
